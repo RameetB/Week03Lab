@@ -18,6 +18,6 @@
         <input type="submit" value="Age next birthday" > <br>
         </form>
         <p>${message}</p>
-        <a href="/arithmeticCalculator.jsp">arithmetic calculator</a>
+        <a href="arithmetic">arithmetic calculator</a>
     </body>
 </html>
