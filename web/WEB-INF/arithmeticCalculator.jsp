@@ -16,14 +16,14 @@
         <form method="post" action="arithmetic">
             First: <input type="number" name="first" value="${first}"><br>
             Second: <input type="number" name="second" value="${second}"><br>
-            
+
             <input type="submit" value="*" name="calculation">
             <input type="submit" value="/" name="calculation">
             <input type="submit" value="-" name="calculation">
             <input type="submit" value="+" name="calculation">
         </form>
         <p>${message}</p>
-        
+
         <a href="age">Age Calculator</a>
 
     </body>

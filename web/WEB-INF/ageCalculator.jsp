@@ -14,8 +14,8 @@
     <body>
         <h1>Age Calculator</h1>
         <form action="age" method="post">
-        Enter your age: <input type="number" name="age" > <br>
-        <input type="submit" value="Age next birthday" > <br>
+            Enter your age: <input type="number" name="age" > <br>
+            <input type="submit" value="Age next birthday" > <br>
         </form>
         <p>${message}</p>
         <a href="arithmetic">Arithmetic Calculator</a>
