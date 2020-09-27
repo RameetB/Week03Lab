@@ -21,22 +21,48 @@ public class ArithmeticCalculatorServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-            getServletContext().getRequestDispatcher("/WEB-INF/arithmeticCalculator.jsp").forward(request, response); //loads the arithmeticCalculator.jsp
+
+        request.setAttribute("message", "Result: ---");
+        getServletContext().getRequestDispatcher("/WEB-INF/arithmeticCalculator.jsp").forward(request, response); //loads the arithmeticCalculator.jsp
+
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            String first = request.getParameter("first");
-            String second = request.getParameter("second");
-            request.setAttribute("message", "Result: ---");
+        String first = request.getParameter("first");
+        String second = request.getParameter("second");
 
-            if (first == null || first.equals("") || second == null || second.equals("")) {
-                request.setAttribute("message", "Invalid");
-             
-                return;
-            }
+        request.setAttribute("first", first);
+        request.setAttribute("second", second);
+
+        if (first == null || first.equals("") || second == null || second.equals("")) {
+            request.setAttribute("message", "Result: invalid");
+
+            getServletContext().getRequestDispatcher("/WEB-INF/arithmeticCalculator.jsp").forward(request, response); //loads the arithmeticCalculator.jsp
+
+            return;
+        }
+        int firstNum = Integer.parseInt(first);
+        int secondNum = Integer.parseInt(second);
+        int result = 0;
+
+        String calculation = request.getParameter("calculation");
+
+        if ("*".equals(calculation)) {
+            result = (firstNum * secondNum);
+        } else if ("-".equals(calculation)) {
+            result = (firstNum - secondNum);
+        } else if ("/".equals(calculation)) {
+            result = (firstNum / secondNum);
+        } else if ("+".equals(calculation)) {
+            result = (firstNum + secondNum);
+        }
+
+        request.setAttribute("message", "Result: " + result);
+
+        getServletContext().getRequestDispatcher("/WEB-INF/arithmeticCalculator.jsp").forward(request, response); //loads the arithmeticCalculator.jsp
+
     }
 
 }
